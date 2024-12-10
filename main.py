@@ -94,7 +94,9 @@ def general_control():
     print("General_control... Press Ctrl+C to stop.")
     try:
         while True:
-            obs = env.step(env.read_slider_values(),'joint')
+            values = env.read_slider_values()
+            print(values)
+            obs = env.step(values,'joint')
             # robot.debug_joint_positions()
     except KeyboardInterrupt:
         print("Exiting general_control...")

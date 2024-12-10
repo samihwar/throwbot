@@ -137,8 +137,9 @@ class RobotBase(object):
                 joint = next((j for j in self.joints if j.name == joint_name), None)
                 if joint is None:
                     raise ValueError(f"Joint '{joint_name}' not found!")
-                p.setJointMotorControl2(self.id, joint.id, p.POSITION_CONTROL, joint_position,
-                                        force=joint.maxForce, maxVelocity=joint.maxVelocity)
+                #p.setJointMotorControl2(self.id, joint.id, p.POSITION_CONTROL, joint_position,
+                #                        force=joint.maxForce, maxVelocity=joint.maxVelocity)
+                p.setJointMotorControl2(self.id, joint.id, p.TORQUE_CONTROL, force=joint_position)
 
     def move_gripper(self, open_length):
         raise NotImplementedError
